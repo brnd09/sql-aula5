@@ -16,7 +16,6 @@ values
 (2, 'Dom Quixote', 'Miguel de Cervantes', 1605, 1),
 (3, '1984', 'George Orwell', 1949, 1);
 
-
 create table if not exists usuarios(
 id_usuario int primary key not null,
 nome varchar(255) not null,
@@ -42,5 +41,12 @@ id_usuario int,
 constraint id_usuario foreign key (id_usuario) references usuarios(id_usuario)
 );
 
+alter table emprestimos
+modify column devolucao boolean default false;
 
-
+insert into emprestimos
+(id_emprestimo, data_emprestimo, data_devolucao_prev, id_livro, id_usuario)
+values
+(1, "2023-08-29", "2023-09-13", 1, 1),
+(2, "2023-09-1", "2023-09-16", 2 , 2),
+(3, "2023-09-17", "2023-09-30", 2, 1);
